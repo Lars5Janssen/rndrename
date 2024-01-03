@@ -11,7 +11,10 @@ fileCount=$(ls $sourceFolder -l | grep -v ^d | wc -l)
 
 for (( i = 1 ; i < $fileCount ; i++ )); do 
 fileToMove=$(ls $sourceFolder |sort -R | tail -1)
-mv $sourceFolder/$fileToMove $destFolder/$i
+extension="${fileToMove##*.}"
+echo $fileToMove
+echo $extension
+mv $sourceFolder/$fileToMove $destFolder/$i.$extension
 done
 
 mv $destFolder/* $sourceFolder/
