@@ -8,6 +8,8 @@ cd tempDestinationForRNDRename
 destFolder=$(pwd)
 cd $sourceFolder
 
+echo "Removing whitespaces"
+for f in *\ *; do mv "$f" "${f// /_}"; done
 
 fileCount=$(ls $sourceFolder -l | grep -v ^d | wc -l)
 fileCountSize=${#fileCount}
